@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,7 @@ Route::get('/', function () {
 
 
 // 会員登録・ログイン機能
-// Route::get('/register', [RegisterController::class, 'create']);
+Route::get('/register', [RegisterController::class, 'create']);
 // Route::post('/register', [RegisterController::class, 'store']);
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
