@@ -34,4 +34,4 @@ Route::get('/register', [RegisterController::class, 'create']);
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-// Route::get('/thanks', [RegisterController::class, 'thanks'])->name('thanks');
+Route::get('/thanks', [RegisterController::class, 'thanks'])->name('thanks');
