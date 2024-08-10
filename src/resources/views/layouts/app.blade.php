@@ -12,28 +12,23 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="conts-body">
-            <button class="hamburger">
-                <span class="hamburger_bar"></span>
-                <span class="hamburger_bar"></span>
-                <span class="hamburger_bar"></span>
-            </button>
-
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="">ナビゲーション1</a></li>
-                    <li class="nav-item"><a href="">ナビゲーション2</a></li>
-                    <li class="nav-item"><a href="">ナビゲーション3</a></li>
-                    <li class="nav-item"><a href="">ナビゲーション4</a></li>
-                    <li class="nav-item"><a href="">ナビゲーション5</a></li>
-                </ul>
-            </nav>
+<header>
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <!--メニュー-->
+        <div class="menu-content">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <!--Logout,Mypageに切り替え機能追加予定-->
+                <li><a href="#">Registration</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
         </div>
-        <h1 class="header-ttl">Rese</h1>
-    </header>
+    </div>
+</header>
     <main>
-      @yield('main')
+        @yield('main')
     </main>
 </body>
 
