@@ -1,14 +1,24 @@
+.header_content {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.header_h1-title {
+    font-size: 24px;
+    color: #305DFF;
+    margin-left: 20px; /* アイコンとの間隔を調整 */
+}
+
 .menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 70px;
+    position: relative; /* 固定配置を解除 */
     display: flex;
     height: 60px;
     width: 60px;
     justify-content: center;
     align-items: center;
     z-index: 90;
-    /*ボタンの背景色*/
     background-color: #305DFF;
     border-radius: 15%;
     box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
