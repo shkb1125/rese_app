@@ -24,11 +24,26 @@ class ShopController extends Controller
         return view('shop_all', compact('shops', 'areas', 'genres'));
     }
 
-    public function detail()
+    public function detail($shop_id)
     {
-        $shops = $this->shop->with(['area', 'genre'])->get();
+        $shop = $this->shop->with(['area', 'genre'])->findOrFail($shop_id);
         $areas = Area::all();
         $genres = Genre::all();
-        return view('shop_detail', compact('shops', 'areas', 'genres'));
+
+        $start_time = '10:00';
+        $end_time = '21:00';
+
+        $time_slots = [];
+        $current_time = strtotime($start_time);
+        $end_time = strtotime($end_time);
+
+        while ($current_time <= $end_time) {
+            $time_slots[] = date('H:i', $current_time);
+            $current_time = strtotime('+30 minutes', $current_time);
+        }
+
+        $people_options = range(1, 10);
+
+        return view('shop_detail', compact('shop', 'areas', 'genres', 'time_slots', 'people_options'));
     }
 }
