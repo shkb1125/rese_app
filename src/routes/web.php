@@ -6,7 +6,7 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [ShopController::class, 'index']);
+    Route::get('/', [ShopController::class, 'index'])->name('index');
     // Route::get('/mypage', [UserController::class, 'mypage']);
     // Route::get('/detail/:shop_id', [ShopController::class, 'detail'];
     // Route::post('/done', [ShopController::class, 'done']);
