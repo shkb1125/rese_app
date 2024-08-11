@@ -11,12 +11,12 @@ class Shop extends Model
 
     public function area()
     {
-        return $this->belongsTo('Area');
+        return $this->belongsTo('App\Models\Area');
     }
 
     public function genre()
     {
-        return $this->belongsTo('Genre');
+        return $this->belongsTo('App\Models\Genre');
     }
 
     public function reservations()
