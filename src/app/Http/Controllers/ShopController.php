@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Favorite;
 use App\Models\Genre;
 use App\Models\Reservation;
 use App\Models\Shop;
@@ -24,6 +25,16 @@ class ShopController extends Controller
         $areas = Area::all();
         $genres = Genre::all();
         return view('shop_all', compact('shops', 'areas', 'genres'));
+    }
+
+    public function favorite(Request $request)
+    {
+        Favorite::create([
+            'user_id' => Auth::id(),
+            'shop_id' => $request->input('shop_id'),
+        ]);
+
+        return redirect()->back();
     }
 
     public function detail($shop_id)

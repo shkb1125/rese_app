@@ -6,29 +6,27 @@
 
 @section('content')
   <div class="app">
-    <nav>
-      <ul>
-        <li>
-          <select class="header__search-select" name="area" value="{{ request('') }}">
-            <option disabled selected>All area</option>
-            @foreach ($areas as $area)
-              <option value="{{ $area->id }}">{{ $area->name }}</option>
-            @endforeach
-          </select>
-          <select class="search-form__gender-select" name="gender" value="{{ request('') }}">
-            <option disabled selected>All genre</option>
-            @foreach ($genres as $genre)
-              <option value="{{ $genre->id }}">{{ $genre->name }}</option>
-            @endforeach
-          </select>
-          {{-- 検索フォーム --}}
-          <input class="search-form__keyword-input" type="text" name="keyword" placeholder="Search..."
-            value="{{ request('keyword') }}">
-        </li>
-      </ul>
-    </nav>
+    <form action="">
+      <select class="header__search-select" name="area" value="{{ request('') }}">
+        <option disabled selected>All area</option>
+        @foreach ($areas as $area)
+          <option value="{{ $area->id }}">{{ $area->name }}</option>
+        @endforeach
+      </select>
+      <select class="search-form__gender-select" name="gender" value="{{ request('') }}">
+        <option disabled selected>All genre</option>
+        @foreach ($genres as $genre)
+          <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+        @endforeach
+      </select>
+      {{-- 検索フォーム --}}
+      <input class="search-form__keyword-input" type="text" name="keyword" placeholder="Search..."
+        value="{{ request('keyword') }}">
+    </form>
+
     <div class="shop__content">
-      <form class="shop__content-list" action="">
+      <form class="shop__content-list" action="{{ route('favorite') }}" method="post">
+        @csrf
         @foreach ($shops as $shop)
           <div class="shop-list__content">
             <img src="{{ $shop->img_url }}" alt="" class="shop-list__content-img">
@@ -36,7 +34,8 @@
             <div class="shop-list__content-tag">#{{ $shop->area->name }} #{{ $shop->genre->name }}</div>
             <a class="shop-list__content-btn" href="{{ route('detail', $shop->id) }}">詳しくみる</a>
             {{-- お気に入り登録 --}}
-            <div class="shop-list__content-favorite"></div>
+              <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+              <button type="submit" class="shop-list__content-favorite">♡</button>
           </div>
         @endforeach
       </form>
