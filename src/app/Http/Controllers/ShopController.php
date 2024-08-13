@@ -7,6 +7,7 @@ use App\Models\Favorite;
 use App\Models\Genre;
 use App\Models\Reservation;
 use App\Models\Shop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,9 +75,18 @@ class ShopController extends Controller
 
     public function mypage()
     {
+        $user_id = Auth::id();
+        $reservations = Reservation::where('user_id', $user_id)->with('shop')->get();
+
+        foreach ($reservations as $reservation) {
+            // 日付をフォーマット
+            $reservation->formatted_date = Carbon::parse($reservation->reservation_date)->format('Y-m-d');
+            // 時間をフォーマット
+            $reservation->formatted_time = Carbon::parse($reservation->reservation_date)->format('H:i');
+        }
+
         $shops = $this->shop->with(['area', 'genre'])->get();
-        $areas = Area::all();
-        $genres = Genre::all();
-        return view('my_page', compact('shops', 'areas', 'genres'));
+
+        return view('my_page', compact('reservations', 'shops'));
     }
 }
