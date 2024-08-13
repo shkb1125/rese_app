@@ -9,7 +9,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('index');
     // Route::get('/mypage', [UserController::class, 'mypage']);
     Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
-    // Route::post('/done', [ShopController::class, 'done']);
+    Route::post('/done', [ShopController::class, 'done']);
 });
 
 // 会員登録・ログイン機能

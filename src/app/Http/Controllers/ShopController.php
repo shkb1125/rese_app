@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -45,5 +47,17 @@ class ShopController extends Controller
         $people_options = range(1, 10);
 
         return view('shop_detail', compact('shop', 'areas', 'genres', 'time_slots', 'people_options'));
+    }
+
+    public function done(Request $request)
+    {
+        $reservation = Reservation::create([
+            'user_id' => Auth::id(),
+            'shop_id' => $request->input('shop_id'),
+            'reservation_date' => $request->input('reservation_date') . ' ' . $request->input('reservation_time'),
+            'number_of_people' => $request->input('reservation_people'),
+        ]);
+
+        return view('done', compact('reservation'));
     }
 }
