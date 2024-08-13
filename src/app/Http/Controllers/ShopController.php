@@ -60,4 +60,12 @@ class ShopController extends Controller
 
         return view('done', compact('reservation'));
     }
+
+    public function mypage()
+    {
+        $shops = $this->shop->with(['area', 'genre'])->get();
+        $areas = Area::all();
+        $genres = Genre::all();
+        return view('my_page', compact('shops', 'areas', 'genres'));
+    }
 }
