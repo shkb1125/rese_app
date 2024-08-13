@@ -8,7 +8,7 @@
   <div class="app">
     <div class="done__content">
       <div class="shop__content-message">ご予約ありがとうございます</div>
-      <button class="shop__content-btn">戻る</button>
+      <a class="shop__content-btn" href="/">戻る</a>
     </div>
   </div>
 @endsection
